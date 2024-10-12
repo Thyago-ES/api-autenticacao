@@ -10,7 +10,13 @@ exports.register = async (req, res) => {
 		}
 
 		user = await User.create(req.body);
-		res.status(201).json({ message: "Usuário criado com sucesso" });
+		res.status(201).json({
+			message: "Usuário criado com sucesso",
+			user: {
+				id: user.id,
+				name: user.name,
+			},
+		});
 	} catch (err) {
 		return res.status(500).json({ error: "Erro ao registrar usuário" });
 	}
@@ -26,7 +32,7 @@ exports.login = async (req, res) => {
 		}
 
 		if (!(await bcrypt.compare(password, user.password))) {
-			return res.status(400).json({ error: "A senha está incorreta" });
+			return res.status(400).json({ error: "Credenciais incorretas" });
 		}
 
 		const token = jwt.sign(
