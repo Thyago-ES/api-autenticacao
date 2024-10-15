@@ -5,12 +5,12 @@ Esta API foi desenvolvida para prática dos conceitos de autenticação e autori
 Permitindo o registro de novos usuários no sistema e a autenticação via login. Além disso, a API oferece uma rota protegida, acessível apenas por usuários autenticados e autorizados.
 
 ## Estrutura de Pastas
-/src               # Código-fonte principal
-  /controllers     # Classes com métodos de controle das rotas
-  /middlewares     # Funções intermediárias que processam as requisições
-  /models          # Modelos de dados do PostgreSQL
-/config            # Objetos isolados de configurações
-/database          # Classe do banco de dados para conexão e Migrations
+/src               # Código-fonte principal  
+  /controllers     # Classes com métodos de controle das rotas  
+  /middlewares     # Funções intermediárias que processam as requisições  
+  /models          # Modelos de dados do PostgreSQL  
+/config            # Objetos isolados de configurações  
+/database          # Classe do banco de dados para conexão e Migrations  
 
 ## Tecnologias Utilizadas
 - **Node.js**: Ambiente de execução Javascript no lado do servidor.
