@@ -1,25 +1,25 @@
 require("dotenv").config();
 
 const express = require("express");
-const sequelize = require("./config/database");
 
 const authRoutes = require("./routes");
 
-const app = express();
+require("./database");
 
-app.use(express.json());
+class App {
+	constructor() {
+		this.server = express();
+		this.middlewares();
+		this.routes();
+	}
 
-app.use("/api", authRoutes);
+	middlewares() {
+		this.server.use(express.json());
+	}
 
-const port = process.env.PORT || 3000;
+	routes() {
+		this.server.use("/api", authRoutes);
+	}
+}
 
-sequelize
-	.sync()
-	.then(() => {
-		app.listen(port, () => {
-			console.log(`Servidor rodando na porta ${port}`);
-		});
-	})
-	.catch((err) => {
-		console.error("Erro ao sincronizar banco de dados", err);
-	});
+module.exports = new App().server;
