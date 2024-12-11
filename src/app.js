@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 
 const authRoutes = require("./routes");
+const simpleRoute = require("./simpleRoute");
 
 require("./database");
 
@@ -19,6 +20,7 @@ class App {
 
 	routes() {
 		this.server.use("/api", authRoutes);
+		this.server.use(simpleRoute);
 	}
 }
 
