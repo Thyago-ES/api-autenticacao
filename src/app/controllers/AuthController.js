@@ -27,8 +27,6 @@ class AuthController {
 		try {
 			const { email, password } = req.body;
 
-			console.log("Erro não é aqui 1");
-
 			let user = await User.findOne({ where: { email } });
 			if (!user) {
 				return res.status(404).json({ error: "Usuário não encontrado" });
@@ -48,7 +46,7 @@ class AuthController {
 
 			return res.status(200).json({ token });
 		} catch (err) {
-			return res.status(500).json({ error: "Erro ao fazer login: " + err });
+			return res.status(500).json({ error: "Erro ao fazer login" });
 		}
 	}
 }
